@@ -1,0 +1,130 @@
+Employment Management System. Full Stack Application Prompt
+
+Context and function
+I need to build a good Employment Management System. This system is for managing people at work. As the person in charge of building this system I have to make sure it is easy to use and works well. The Employment Management System must have an interface that people like to use. It has to be easy to get and work well on different devices.
+
+The Employment Management System should have a page that shows all the important information about the people working at the company. This page should be easy to understand and help the people, in charge of hiring the heads of departments and the employees themselves. The Employment Management System should also have a way for people to talk to each other and send messages. When someone sends a message the system should keep a record of it. Send an email to the people who need to know. The Employment Management System is a deal and I want to make sure it is really good.
+
+
+Objective
+I want to make a website that shows all my work. This website should have
+* animations that play when you scroll down the page using Framer Motion.
+* a clean and modern design that looks good on any device and has movements.
+* a button that says "Get in Touch" which opens a form to send me a message.
+* a way to keep the messages people send me safe and private.
+* a way to send me an email when someone fills out the form, on my portfolio website with the details they submitted on the portfolio website.
+
+
+UI and Animation Requirements
+
+Dashboard Animations and Interactions
+Implement entrance animations on dashboard widgets and metric cards on page load.
+Use animated charts for headcount trends, attrition rate, and department distribution.
+Apply staggered transitions when loading employee lists and table rows.
+Animate module transitions (Dashboard → Leave → Payroll) with smooth fade or slide effects
+Include hover interactions on action cards, employee rows, and quick-action buttons
+Ensure all animations are performant:
+#Use GPU-friendly properties (transform, opacity) only.
+#Avoid layout thrashing.
+#Do not block scroll or interaction performance.
+
+Layout Requirements
+The system must include:
+Dashboard section with animated metric cards and real-time charts
+Employee Management section with animated list reveal and profile transitions
+Attendance section with animated calendar and status indicators
+Leave Management section with animated approval workflow steps
+Payroll section with animated salary breakdown and payslip preview
+Performance section with animated goal progress indicators and review timelines
+Notification center with animated alert badges and in-app toast messages
+
+The layout must be:
+Fully responsive (mobile, tablet, desktop)
+Sidebar navigation with smooth collapse and expand animation
+Accessible (ARIA labels, keyboard navigation, semantic HTML)
+Optimized for performance with lazy-loaded sections and skeleton loaders
+
+Contact and Request System Requirements
+Modal Behavior
+
+Clicking action buttons (Apply Leave, Add Employee, Approve, Send Reminder) must:
+Open a modal form with an animated entrance and exit.
+Lock background scroll while modal is open
+Close on backdrop click or ESC key with exit animation
+
+Form Fields
+
+Employee Name (auto-filled from session, read-only)
+Request Type (dropdown: Leave / Query / Document Request / Other)
+Date Range or Target Date (date picker)
+Reason or Message (required, multiline)
+Supporting Document (optional file upload)
+
+Validation
+
+Client-side validation with inline error messages per field
+Prevent submission if required fields are empty or incorrectly formatted.
+Show loading state on submit button during API call
+Display success confirmation or error message after submission
+
+Backend Requirements
+
+API Architecture
+
+We need to have an API that has different versions. For example the version will be in the link like this: /api/v1/...
+We will use something called JWT-based authentication. This means we will use a token to make sure only the right people can use our API. We will also make sure this token is changed regularly.
+We need to make sure that only people with the role and permission can use the protected routes.
+We have to keep a record of every API call. This record will have the method, endpoint, user and timestamp.
+
+Data Processing Requirements
+
+We have to make sure all the inputs are clean. This means we have to prevent something called XSS and SQL/NoSQL injection attacks.
+We need to check all the date ranges email formats, phone numbers and numeric fields on the server.
+We have to hash all the passwords. We will use something called b-crypt. We will do it at least 12 times.
+We need to encrypt some fields. These fields are sensitive. They include the PAN number and bank account details. We will use something called AES-256 to encrypt these fields.
+All the API responses have to be in a format. If it is successful it will look like this: { success: data: {... } Message: "Operation successful" }
+If there is an error it will look like this: { success: false error: "Error description," code: 400 }
+If we are getting a list of things, from the API it has to be paginated. This means it will look like this: { data, total, page limit }
+We have to prevent spam and abuse. We will use something called rate limiting. We might also use CAPTCHA on public-facing forms. This will help us make sure that people are not using our API in a way.
+
+Output Requirements
+Role-specific dashboards are fully functional with live data and animated widgets.
+Complete CRUD operations working across all modules
+Automated email notifications were triggered and delivered on all key events.
+PDF payslip generation and download working end-to-end
+Audit log accessible by Admin with filters for date, action type, and user
+Confirmation message shown to user after every successful submission
+Graceful error handling displayed when any backend operation fails
+Animated approval status indicators updating in real time on state changes
+
+Error Handling and Documentation
+Handle frontend errors at both field level and form level with clear user-facing messages.
+Handle backend validation errors with appropriate HTTP status codes (400, 401, 403, 404, 500).
+Implement a global error boundary in the frontend to catch unexpected crashes.
+Log all backend failures using Winston or an equivalent logger (info, warn, error levels).
+Provide complete project documentation covering:
+Folder and module structure
+Setup and local installation instructions
+Environment variable reference table with descriptions
+Seed data instructions for local development and testing
+Full API reference using Swagger or OpenAPI specification
+Deployment steps for Docker, Vercel, Railway, and AWS
+
+Performance and Scalability
+Paginate all list views server-side, to prevent large payload responses
+Do not index outside fields of the database that Index into filters, searches, sorting and joins.
+Redis in-memory store, Cache data which is frequently read and rarely changes (departments, roles and configs)
+Debounce all search inputs with a minimum of 300 ms delay.
+Lazy-load heavy dashboard charts, data visualizations and module components.
+Rate-limited Authentication endpoints (max 5 times/minute per IP)
+Make the API layer designed based on
+
+Technology Stack
+Frontend: React (or Next.js, Framer Motion for animations and transitions—Tailwind CSS for styling). Recharts or Chart.js for data visualizations
+Backend: Node.js with Express (or Next.js API routes), Nodemailer or SendGrid for sending emails, dotenv environment configuration (e.g.
+Database: PostgreSQL (recommended) or MongoDB
+Optional: Redis (for caching), Docker (for containerization), Prisma or Mongoose (ORMs), Swagger UI (interactive API documentation), MongoDB Atlas/Supabase (managed DB hosting)
+
+
+
+
